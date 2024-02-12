@@ -1,0 +1,71 @@
+consider the following, I have a column that specify whether a payement is of type : mensuel/annuel/hebdomadaire.
+and another column of date of payement.
+I want to add a column named "state_inscription" which determine the state of the subscription to the current day as "yes" or "no" by calculating the difference between the date of the last payement and today's date but depending on the type of payement specefied above
+
+
+SELECT 
+    abonner.*,
+    IIf(
+        DateDiff('d', [der_pai], Date()) <= 
+        IIf([typ_abn] = 'mensuel', 30,
+            IIf([typ_abn] = 'annuel', 365,
+                IIf([typ_abn] = 'hebdomadaire', 7, 0)
+            )
+        ),
+        'Yes',
+        'No'
+    ) AS valid
+FROM abonner;
+
+
+(SELECT 
+    abonner.*,
+    Switch(
+         «Expr» [typ_abn] «Expr»  = 'mensuel' AND DateDiff('d', «Expr» [der_pai] «Expr», Date()) <= 30, 'Yes',
+         «Expr» [typ_abn] «Expr»  = 'annuel' AND DateDiff('d', «Expr» [der_pai] «Expr», Date()) <= 365, 'Yes',
+         «Expr» [typ_abn] «Expr»  = 'hebdomadaire' AND DateDiff('d', «Expr» [der_pai] «Expr», Date()) <= 7, 'Yes',
+        True, 'No'
+    ) AS valid
+FROM abonner;)
+
+I have a table named article that contains a column named qte_stc meaning the quantity in stock and another table named contenir that let's the admin input the quantitée of a certain article that was sold, but I want to make sure the admin doesn't input a number that is greater than qte_stc
+
+
+Private Sub CommandBeforeExecute(ByVal Command As ADODB.Command, _
+    Cancel As Boolean, ExecuteOption As Integer, _
+    ByVal Connection As ADODB.Connection, _
+    RecordsetOption As Integer, _
+    CommandText As String, _
+    RecordsAffected As Long, _
+    Parameters As ADODB.Parameters, _
+    ByVal adStatus As ADODB.EventStatusEnum, _
+    ByVal pCommandText As ADODB._Command)
+
+    If Left(Command.CommandText, 6) = "INSERT" Then
+        Dim cod_art As Integer
+        Dim qte_cmd As Integer
+        Dim qteStc As Integer
+
+        ' Extract values from the parameters
+        For Each param In Parameters
+            If param.Name = "cod_art" Then
+                cod_art = param.Value
+            ElseIf param.Name = "quantite_vendue" Then
+                quantiteVendue = param.Value
+            End If
+        Next param
+
+        ' Retrieve qte_stc from the article table
+        qteStc = DLookup("qte_stc", "article", "cod_art = " & cod_art)
+
+        ' Check if the quantity sold exceeds the quantity in stock
+        If qte_cmd > qteStc Then
+            MsgBox "Error: Quantity sold exceeds quantity in stock!", vbExclamation
+            Cancel = True
+        End If
+    End If
+End Sub
+
+
+
+	

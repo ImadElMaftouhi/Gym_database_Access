@@ -1,0 +1,20 @@
+5;Le vélo elliptique.;Valable;01/15/2022;Fournisseur1
+6;Une cage à squat;Non Valable;05/20/2022;Fournisseur2
+7;Haltères 10 kg ;Valable;11/10/2021;Fournisseur3
+8;Tapis de yoga;Non Valable;08/30/2022;Fournisseur4
+9;Ballon de fitness;Valable;04/05/2022;Fournisseur5
+10;Corde à sauter;Valable;02/18/2023;Fournisseur1
+11;Banc de musculation;Non Valable;07/12/2022;Fournisseur2
+12;Barre de traction;Valable;12/25/2021;Fournisseur3
+13;Gants de musculation;Valable;01/08/2023;Fournisseur4
+14;Step aérobic;Non Valable;06/30/2022;Fournisseur5
+15;Disques de poids;Valable;09/14/2021;Fournisseur1
+16;Machine à ramer;Non Valable;11/05/2022;Fournisseur2
+17;Casque de protection;Valable;03/20/2023;Fournisseur3
+18;Chaise romaine;Valable;02/28/2022;Fournisseur4
+19;Gourde de sport;Non Valable;10/18/2021;Fournisseur5
+20;Poids pour chevilles;Valable;04/10/2023;Fournisseur1
+21;Planche à abdominaux;Valable;03/15/2022;Fournisseur2
+22;Sac de frappe;Non Valable;09/22/2022;Fournisseur3
+23;Élastiques de résistance;Valable;08/08/2021;Fournisseur4
+24;Gants de boxe;Non Valable;05/05/2023;Fournisseur5

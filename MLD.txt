@@ -1,0 +1,51 @@
+
+employée (#cin_emp (PK), nom_emp, pre_emp, tel_emp, eml_emp, adr_emp, dat_deb_con, dat_fin_con, sal_emp,pst_emp, atd_emp, exp_emp )
+
+
+encadrer (#nom_act (pk), #cin_act (pk) )
+
+
+activitée(#nom_act (PK), nbr_snc_mts, #id_sal (fk) )
+
+
+client(#cin_clt (pk), nom_clt, pre_clt, gen_clt, tel_clt, adr_clt, dat_nss_clt, eta_dbq, dat_ins, )
+
+
+abonner(#cin_clt (pk), #nom_act (pk), typ_abn, eta_abn, mnt_abn, der_pai)
+
+
+salle(#nom_sal (pk), adr_sal )
+
+
+payer(#cod_pmt_emp (pk), met_pmt_emp, dat_pmt_emp, #cin_emp (fk), #nom_sal (fk)
+
+
+commande(#cod_cmd (pk), dat_cmd, #cod_clt (fk) )
+
+
+article(#cod_art, nom_art, prx_unt_art)
+
+
+contient(#cod_art (pk), #cod_cmd (pk), qte_cmd)
+
+
+material(#cod_eqp (pk), nom_eqp, eta_eqp, dat_ach, nom_for)
+
+
+utiliser(#cod_eqp (pk), #nom_act (pk) )
+
+
+categorie(#id_cat (pk), nom_cat ) 
+
+
+appartenir ( #id_cat (pk), #cod_eqp (pk) )
+
+
+facture (#cod_fac (pk), typ_fac, prx_fac, dat_ems)
+
+
+regler (#cod_pmt (pk), met_pmt, mnt_pmt, dat_pmt, #nom_sal (fk), #cod_fac (fk) )
+
+
+
+
